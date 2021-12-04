@@ -13,9 +13,7 @@ puts @name
 @z = 0
     puts 'Ленивец ' + @name + ' лениво родился.'
 end
-def private
-  @z = 10
-end
+
 def workwork
 @time = @time - ((@c / 40) * rand(2))
     @time =  @time + rand(3..5) + @z  #  жизни, время , запас еды
