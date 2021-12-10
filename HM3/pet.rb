@@ -1,104 +1,113 @@
 class Pet
-  attr_accessor  :health, :happiness, :fullness, :activity, :smile, :name, :reaction
+  attr_accessor :health, :happiness, :fullness, :activity, :asleep, :eat, :clean, :water, :smile, :name, :reaction
 
-  def initialize(health = 100, happiness = 99.9, fullness = 100, activity = 100, smile = 100, name = "ленівец", reaction = '')
-    @health = health
-    @happiness = happiness
-    @fullness = fullness
-    @activity = activity
+  def initialize(health = 100, happiness = 100, fullness = 100, activity = 100, asleep = 100, eat = 100, clean = 100, water = 100, smile = '🐣🇺🇦', name = 'ленівец', reaction = 'Ваш вихованець народився. Виберіть для нього назву:')
+    @health = health #  жизни, время , запас еды
+    @happiness = happiness #  настроение, радость
+    @fullness = fullness # показатель нужди
+    @activity = activity # показатель здаровье
+    @asleep = asleep # показатель сна,
+    @eat = eat # показатель голода,
+    @clean = clean # показатель чистоты
+    @water = water # показатель воды
     @name = name
     @reaction = reaction
     @smile = smile
+  end
 
+  def workwork
+    @reaction = 'Тяко'
+    @smile = '🦥'
+    @health += 60
+    decrease_stat
+    time_passed
   end
 
   def play
     @reaction = 'Смішно!) Це так смішно'
-    @happiness.between?(0, 90) ? @happiness += rand(5..10) : @happiness = 100
+    @smile = '👅'
+    @happiness += 60
     decrease_stat
     time_passed
   end
 
   def feed
     @reaction = 'ОмНомНом, так смачно'
-    @fullness.between?(0, 90) ? @fullness += rand(5..10) : @fullness = 100
-    increase_stat
+    @smile = '💪'
+    @eat += 60
+    decrease_stat
     time_passed
   end
 
   def sleep
     @reaction = "ZZZZZZZ ... #{@name} прокидається і позіхає"
-    @fullness > 10 ? @fullness -= rand(5..10) : @fullness = 0
-    increase_stat
+    @smile = '🦉'
+    @asleep += 60
+    decrease_stat
     time_passed
   end
 
   def heal
-    @health = 100
-    @happiness = 99.8
     @reaction = "#{@name} щасливий і здоровий знову, тож ви можете грати з ним"
+    @smile = '🍺'
+    @activity += 60
+    decrease_stat
     time_passed
   end
 
   def playyy
-    @reaction = ' Смішно!) Це так смішно xa xa'
-    @happiness += rand(5..10)
+    @reaction = ' Хльоб Хльоб'
+    @smile = '🍼'
+    @water += 60
+    decrease_stat
+    time_passed
+  end
+
+  def aaclean
+    @reaction = ' Хльоб Хльоб'
+    @smile = '⛲'
+    @clean += 60
+    decrease_stat
+    time_passed
+  end
+
+  def aaaclean
+    @reaction = ' наделал'
+    @smile = '🌋'
+    @fullness += 60
     decrease_stat
     time_passed
   end
 
   def watch
     time_passed
+    @smile = '👀'
   end
 
   private
 
-  def hungry?
-    @fullness < 30
-  end
-
-  def happy?
-    @happiness > 60
-  end
-
-  def healthy?
-    @health > 50
-  end
-
   def died?
-    @health == 0
-  end
-
-  def wants_to_sleep?
-    @activity < 30
-  end
-
-  def angry?
-    @fullness < 30 && @happiness < 40
-  end
-
-  def wants_to_poop?
-    @fullness >= 90
+    @health <= 0 || @happiness <= 0 || @fullness <= 0 ||
+      @activity <= 0 ||
+      @asleep <= 0 ||
+      @eat <= 0 ||
+      @clean <= 0 ||
+      @water <= 0
   end
 
   def decrease_stat
-    @fullness > 20 ? @fullness -= rand(10..20) : @fullness = 0
-    @activity > 20 ? @activity -= rand(10..20) : @activity = 0
-    @health > 20 ? @health -= rand(10..20) : @health = 0
-    @happiness > 20 ? @happiness -= rand(5..10) : @happiness = 10
-  end
-
-  def increase_stat
-    @activity.between?(0, 90) ? @activity += rand(5..10) : @activity = 100
-    @happiness.between?(0, 90) ? @happiness += rand(5..10) : @happiness = 1.1
-    @health.between?(0, 90) ? @health += rand(5..10) : @health = 100
+    @health -= 10
+    @happiness -= 10
+    @fullness -= 10
+    @activity -= 10
+    @asleep -= 10
+    @eat -= 10
+    @clean -= 10
+    @water -= 10
   end
 
   def time_passed
-    @smile = rand(1..100)
-    @reaction = 'Погане самопочуття, відвідайте лікаря' unless healthy?
-    @reaction = 'Ваш вихованець какає на підлогу' if wants_to_poop?
-    @reaction = 'Домашня тварина хоче спати!' if wants_to_sleep?
-    @reaction = "#{@name.capitalize} умер" if died?
-   end
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if died?
+    @smile = '🍗 🍳 ☠' if died?
+  end
 end

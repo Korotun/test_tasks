@@ -1,159 +1,113 @@
-class Dragon
-    def initialize (name)
-    @name = name
-puts @name 
-@happy = 6 #  настроение, радость 
-@time =  6  #  жизни, время , запас еды
-@eat = 6 #показатель голода, 
-@asleep = 6 #показатель сна,
-@water = 6 #показатель воды
-@shit = 6 #показатель наполнения 
-@clean = 6 #показатель чистоты
-@c = Time.new
-@z = 0
-    puts 'Ленивец ' + @name + ' лениво родился.'
-end
+class Pet
+  attr_accessor :health, :happiness, :fullness, :activity, :asleep, :eat, :clean, :water, :smile, :name, :reaction
 
-def workwork
-@time = @time - ((@c / 40) * rand(2))
-    @time =  @time + rand(3..5) + @z  #  жизни, время , запас еды
-    @happy = @happy - 1
-    @eat = @eat - 1
-    @asleep = @asleep - 1 
-    @water = @water - 1 
-    @shit = @shit - 1
-    @clean = @clean - 1
-        puts 'Ленивец ' + @name + 'работает. запас еды:' + @time.to_s
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
-        @c = Time.new
-end
-def feed # ест
-        @eat = @eat - ((@c / 40) * rand(2))
-    @time = @time - 1
-    @happy = @happy - 1
-    @eat = @eat + rand(3..5)
-    @asleep = @asleep - 1 
-    @water = @water - 1 
-    @shit = @shit - 1
-    @clean = @clean - 1
-        puts 'Ленивец  ' + @name + ' ест, сытность:' + @eat.to_s
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
-         @c = Time.new
-end
-def walk # гулять
-        @happy = @happy - ((@c / 40) * rand(2))
-    @time = @time - 1
-    @happy = @happy + rand(3..5)
-    @eat = @eat - 1
-    @asleep = @asleep - 1 
-    @water = @water - 1 
-    @shit = @shit - 1
-    @clean = @clean - 1
-    puts 'Ленивец ' + @name + ' выгуливаете себя. радость: ' + @happy.to_s
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
-         @c = Time.new
-end
-def sleep # спать
-        @asleep = @asleep - ((@c / 40) * rand(2))
-    @time = @time - 1
-    @happy = @happy - 1
-    @eat = @eat - 1
-    @asleep = @asleep + rand(3..5)
-    @water = @water - 1 
-    @shit = @shit - 1
-    @clean = @clean - 1
-    puts 'Ленивец  ' + @name + ' спіт. показатель сна:' + @asleep.to_s + 'і радості:' + @happy.to_s   
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
- @c = Time.new
-end
-def drink # пьет
-        @water = @water - ((@c / 40) * rand(2))
-    @time = @time - 1
-    @happy = @happy - 1
-    @eat = @eat - 1
-    @asleep = @asleep - 1 
-    @water = @water + rand(3..5) 
-    @shit = @shit - 1
-    @clean = @clean - 1
-        puts 'Ленивец  ' + @name + ' пьет, уровень воды:' + @water.to_s
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
-         @c = Time.new
-end
-def shit # срет
-        @shit = @shit - ((@c / 40) * rand(2))
-    @time = @time - 1
-    @happy = @happy - 1
-    @eat = @eat - 1
-    @asleep = @asleep - 1 
-    @water = @water - 1 
-    @shit = @shit + rand(3..5)
-    @clean = @clean - 1
-        puts 'Ленивец  ' + @name + ' в туалет, наполнения :' + @shit.to_s
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
-         @c = Time.new
-end
-def clean # купатся
-        @clean = @clean - ((@c / 40) * rand(2))
-    @time = @time - 1
-    @happy = @happy - 1
-    @eat = @eat - 1
-    @asleep = @asleep - 1 
-    @water = @water - 1 
-    @shit = @shit - 1
-    @clean = @clean + rand(3..5)
-        puts 'Ленивец  ' + @name + ' купаетя, показатель чистоты:' + @water.to_s
-        puts 'Ленивец  ' + @name + ' умер, потому что нет еды  ' if @time <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не кушал  ' if @eat <= 0 
-        puts 'Ленивец  ' + @name + ' умер, от тоски  ' if @happy <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не спал  ' if @asleep <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не пил   ' if @water  <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потому что не ходил в тоалет ' if @shit <= 0 
-        puts 'Ленивец  ' + @name + ' умер, потомучто грязий    ' if @clean  <= 0 
-         @c = Time.new
-end
-def help 
-        puts 'запас еди:  '             + @time.to_s +          '  workwork'
-        puts 'сит на:  '                + @eat.to_s   +         '  feed'
-        puts 'рад на:  '                + @happy.to_s   +       '  walk'
-        puts 'выспался на:  '           + @asleep.to_s   +      '  sleep'
-        puts 'хочет пить на:  '         + @water.to_s   +       '  drink'
-        puts 'хочет в тоалет на:  '     + @shit.to_s   +        '  shit'
-        puts 'хочет купаться на:  '     + @clean.to_s   +       '  clean'
+  def initialize(health = 100, happiness = 100, fullness = 100, activity = 100, asleep = 100, eat = 100, clean = 100, water = 100, smile = '🐣🇺🇦', name = 'ленівец', reaction = 'Ваш вихованець народився. Виберіть для нього назву:')
+    @health = health #  жизни, время , запас еды
+    @happiness = happiness #  настроение, радость
+    @fullness = fullness # показатель нужди
+    @activity = activity # показатель здаровье
+    @asleep = asleep # показатель сна,
+    @eat = eat # показатель голода,
+    @clean = clean # показатель чистоты
+    @water = water # показатель воды
+    @name = name
+    @reaction = reaction
+    @smile = smile
+  end
+
+  def workwork
+    @reaction = 'Тяко'
+    @smile = '🦥'
+    @health += 60
+    decrease_stat
+    time_passed
+  end
+
+  def play
+    @reaction = 'Смішно!) Це так смішно'
+    @smile = '👅'
+    @happiness += 60
+    decrease_stat
+    time_passed
+  end
+
+  def feed
+    @reaction = 'ОмНомНом, так смачно'
+    @smile = '💪'
+    @eat += 60
+    decrease_stat
+    time_passed
+  end
+
+  def sleep
+    @reaction = "ZZZZZZZ ... #{@name} прокидається і позіхає"
+    @smile = '🦉'
+    @asleep += 60
+    decrease_stat
+    time_passed
+  end
+
+  def heal
+    @reaction = "#{@name} щасливий і здоровий знову, тож ви можете грати з ним"
+    @smile = '🍺'
+    @activity += 60
+    decrease_stat
+    time_passed
+  end
+
+  def playyy
+    @reaction = ' Хльоб Хльоб'
+    @smile = '🍼'
+    @water += 60
+    decrease_stat
+    time_passed
+  end
+
+  def aaclean
+    @reaction = ' Хльоб Хльоб'
+    @smile = '⛲'
+    @clean += 60
+    decrease_stat
+    time_passed
+  end
+
+  def aaaclean
+    @reaction = ' наделал'
+    @smile = '🌋'
+    @fullness += 60
+    decrease_stat
+    time_passed
+  end
+
+  def watch
+    time_passed
+    @smile = '👀'
+  end
+
+  private
+
+  def died?
+    @health <= 0 || @happiness <= 0 || @fullness <= 0 ||
+      @activity <= 0 ||
+      @asleep <= 0 ||
+      @eat <= 0 ||
+      @clean <= 0 ||
+      @water <= 0
+  end
+
+  def decrease_stat
+    @health -= 10
+    @happiness -= 10
+    @fullness -= 10
+    @activity -= 10
+    @asleep -= 10
+    @eat -= 10
+    @clean -= 10
+    @water -= 10
+  end
+
+  def time_passed
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if died?
+    @smile = '🍗 🍳 ☠' if died?
   end
 end
