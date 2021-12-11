@@ -107,7 +107,14 @@ class Pet
   end
 
   def time_passed
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if died?
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @health <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @happiness <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @fullness <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @activity <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @asleep <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @eat <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @clean <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @water <= 0
     @smile = '🍗 🍳 ☠' if died?
   end
 end

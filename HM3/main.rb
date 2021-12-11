@@ -17,18 +17,20 @@ class Game
     MakeHtml.new.open_in_browser
 
     while @pet.health != 0
-      print "\nChoose command (to show info press `9`, than `Enter`): "
+      print "\nChoose command (to show info press `10`, than `Enter`): "
       decision = gets.chomp
       break if decision == '11'
 
       case decision
       when '1'
-        x = rand(1..5)
+        x = rand(1..8)
         @pet.play if x == 1
         @pet.feed if x == 2
         @pet.sleep if x == 3
         @pet.heal if x == 4
-
+        @pet.playyy if x == 5
+        @pet.aaclean if x == 6
+        @pet.aaaclean if x == 7
         html
       when '2'
         @pet.workwork
