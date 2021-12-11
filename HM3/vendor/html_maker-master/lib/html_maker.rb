@@ -1,7 +1,7 @@
 require 'nokogiri'
 
 class MakeHtml
-  def make_html(content, bypass_html, file_name = 'index.html')
+  def make_html(content, bypass_html, file_name = 'index.html', reload_timeout = 2000)
     markup = content.gsub!(/[<>]/, '') if bypass_html == false
     markup = content unless bypass_html == false
 
@@ -13,7 +13,7 @@ class MakeHtml
     f.puts "  </head>"
     f.puts "  <body>"
     f.puts "    <script>"
-    f.puts "      setInterval(()=>{ window.location.reload() }, 2000)"
+    f.puts "      setInterval(()=>{ window.location.reload() }, #{ reload_timeout })"
     f.puts "    </script>"
     f.puts "    #{markup}"
     f.puts "  </body>"

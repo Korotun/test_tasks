@@ -1,7 +1,15 @@
 require_relative 'pet'
 require 'html_maker'
 
+
+
 class Game
+  attr_reader :html_reload_timeout
+
+  def initialize(html_reload_timeout = 2000)
+    @html_reload_timeout = html_reload_timeout
+  end
+
   def create_pet
     @pet = Pet.new
     puts 'Ваш вихованець народився'
@@ -126,8 +134,8 @@ class Game
       <p >#{@pet.smile}</p>
     </div>"
 
-    MakeHtml.new.make_html(content, true, filename)
+    MakeHtml.new.make_html(content, true, filename, html_reload_timeout)
   end
 end
 
-Game.new.start_game
+Game.new(3000).start_game
