@@ -16,7 +16,7 @@ class Pet
   end
 
   def workwork
-    @reaction = 'Тяко'
+    @reaction = 'Тяжко'
     @smile = '🦥'
     @health += 60
     decrease_stat
@@ -72,7 +72,7 @@ class Pet
   end
 
   def aaaclean
-    @reaction = ' наделал'
+    @reaction = ' нагадив'
     @smile = '🌋'
     @fullness += 60
     decrease_stat
@@ -107,14 +107,7 @@ class Pet
   end
 
   def time_passed
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @health <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @happiness <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @fullness <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @activity <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @asleep <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @eat <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @clean <= 0
-    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ умер" if @water <= 0
+    @reaction = "#{@name.capitalize} 🍗 🍳 ☠ помер" if died?
     @smile = '🍗 🍳 ☠' if died?
   end
 end

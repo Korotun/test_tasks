@@ -1,3 +1,6 @@
-HM3
+Test Tasks
+===
 
-bundle exec ruby main.rb
+- HM1
+- HM2
+- HM3
