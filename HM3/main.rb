@@ -35,13 +35,12 @@ class Game
   end
 
   def start_game
-    puts "INFO: To EXIT press CTRL+C"
     create_pet
     help
     MakeHtml.new.open_in_browser
 
     while @pet.health != 0
-      print "\n check state ..."
+      print "\n Tamagochi live ... CTRL+C to *EXIT*"
       decision = fetch_web_action
       # print "\nChoose command (to show info press `10`, than `Enter`): "
       # decision = gets.chomp
