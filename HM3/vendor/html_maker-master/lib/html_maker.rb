@@ -1,9 +1,11 @@
 require 'nokogiri'
 
 class MakeHtml
-  def make_html(content, bypass_html, file_name = 'index.html', reload_timeout = 2000)
+  def make_html(content, bypass_html, file_name = 'index.html', reload_timeout = 2000, web_host = 'http://localhost:4567')
     markup = content.gsub!(/[<>]/, '') if bypass_html == false
     markup = content unless bypass_html == false
+
+    action_url = web_host + '/set_action' + '?action=1'
 
     f = File.new("#{Dir.pwd}/#{file_name}", "w+")
     f.puts "<!DOCTYPE html>"
@@ -14,6 +16,11 @@ class MakeHtml
     f.puts "  <body>"
     f.puts "    <script>"
     f.puts "      setInterval(()=>{ window.location.reload() }, #{ reload_timeout })"
+    f.puts "    </script>"
+    f.puts "    <script>"
+    f.puts "      onClick = function() {"
+    f.puts "        document.getElementById('actionButton').innerHTML = 'Synchronizing..'"
+    f.puts "        fetch('#{action_url}', { mode: 'no-cors' }) }"
     f.puts "    </script>"
     f.puts "    #{markup}"
     f.puts "  </body>"

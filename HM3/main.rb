@@ -1,7 +1,8 @@
+require 'uri'
+require 'net/http'
+
 require_relative 'pet'
 require 'html_maker'
-
-
 
 class Game
   attr_reader :html_reload_timeout
@@ -19,14 +20,30 @@ class Game
     html
   end
 
+  def fetch_web_action
+    action_url = 'http://localhost:4567/get_action'
+    uri = URI(action_url)
+    res = Net::HTTP.get_response(uri)
+
+    if res.is_a?(Net::HTTPSuccess)
+      puts "\n Action id: #{res.body}" unless res.body.empty?
+      res.body
+    else
+      puts "\n Connection not established for Sinatra web server: #{res.inspect}"
+      nil
+    end
+  end
+
   def start_game
     create_pet
     help
     MakeHtml.new.open_in_browser
 
     while @pet.health != 0
-      print "\nChoose command (to show info press `10`, than `Enter`): "
-      decision = gets.chomp
+      print "\n check state ..."
+      decision = fetch_web_action
+      # print "\nChoose command (to show info press `10`, than `Enter`): "
+      # decision = gets.chomp
       break if decision == '11'
 
       case decision
@@ -72,6 +89,8 @@ class Game
       else
         puts 'Неправильна дія'
       end
+
+      sleep(0.5)
     end
   end
 
@@ -110,6 +129,12 @@ class Game
       10 - help<br>
       11 - Exit game </p>
 </div>
+
+<div style='display: flex; margin: 10px 0; padding: 10px 0;width: 150px; border: solid gold; justify-content: center;
+    background-color: antiquewhite; border-radius: 17px;'>
+  <button id='actionButton' onclick='onClick()' style='cursor: pointer;'>RANDOM action</button>
+</div>
+
 </div>
     <div style='margin-left: 3em; font-size: 1.2em'>
       <p>
@@ -138,4 +163,4 @@ class Game
   end
 end
 
-Game.new(3000).start_game
+Game.new(1900).start_game
