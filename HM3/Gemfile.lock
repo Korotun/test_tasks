@@ -6,8 +6,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    coderay (1.1.3)
-    method_source (1.0.0)
     mini_portile2 (2.6.1)
     multi_json (1.15.0)
     mustermann (1.1.1)
@@ -17,9 +15,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x64-mingw32)
       racc (~> 1.4)
-    pry (0.14.1)
-      coderay (~> 1.1)
-      method_source (~> 1.0)
     racc (1.5.1)
     rack (2.2.3)
     rack-protection (2.1.0)
@@ -46,7 +41,6 @@ PLATFORMS
 DEPENDENCIES
   html_maker!
   nokogiri
-  pry
   sinatra-contrib
   webrick
 

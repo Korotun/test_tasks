@@ -35,6 +35,7 @@ class Game
   end
 
   def start_game
+    puts "INFO: To EXIT press CTRL+C"
     create_pet
     help
     MakeHtml.new.open_in_browser
