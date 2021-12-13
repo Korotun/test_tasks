@@ -4,5 +4,4 @@ gem 'nokogiri'
 gem 'sinatra-contrib'
 gem 'webrick'
 
-gem "html_maker", path: 'vendor/html_maker-master'
-
+gem 'html_maker', path: 'vendor/html_maker-master'

@@ -7,4 +7,7 @@ Gem::Specification.new do |s|
   s.email       = '777korotun777@gmail.com'
   s.files       = ['L42/fourty_two.rb']
   s.license = 'MIT'
+  s.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end
