@@ -6,7 +6,7 @@ Now it is possible to play **your pandagotchi** in web.
 ### How to Play
 Please run in the terminal:
 ```
-ruby app.rb
+rackup
 ```
 
 Please open in the browser:
