@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'html_maker', '>=0.1.2'
 gem 'nokogiri'
+gem 'sinatra-contrib'
+gem 'webrick'
+
+gem 'html_maker', path: 'vendor/html_maker-master'

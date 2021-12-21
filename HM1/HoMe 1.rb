@@ -94,7 +94,9 @@ p '--------------'
 
 puts '18. Дан целочисленный массив. Найти количество его локальных минимумов. '
 
-p A.each_index.select { |index| A[index - 1] && A[index] < A[index - 1] && A[index + 1] && A[index] < A[index + 1] }.size
+p A.each_index.select { |index|
+  A[index - 1] && A[index] < A[index - 1] && A[index + 1] && A[index] < A[index + 1]
+}.size
 
 p '--------------'
 

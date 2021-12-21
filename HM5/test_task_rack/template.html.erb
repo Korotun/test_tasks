@@ -1,0 +1,48 @@
+1<html>
+  
+  <head>
+    <script type="text/javascript">
+      function doAction(name) {
+        window.location = window.location.origin + '/' + name
+      }
+    </script>
+    <style type="text/css">
+      body {
+        padding:  10px;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> YOUR PET: <%= $pet.name %></h1>
+
+    <% unless $pet.died? %>
+      <button onclick='doAction("play")'>Play</button>
+      <button onclick='doAction("feed")'>Feed</button>
+      <button onclick='doAction("sleep")'>Sleep</button>
+      <button onclick='doAction("heal")'>Heal</button>
+      <button onclick='doAction("playyy")'>Playyy</button>
+      <button onclick='doAction("aaclean")'>aaaclean</button>
+      <button onclick='doAction("aaaclean")'>aaaclean</button>
+    <% else %>
+      <h2>Your pet is died</h2>
+    <% end %>
+  
+    <div style='margin-left: 3em; font-size: 1.2em'>
+      <p>
+        Stats:<br>
+        2 health: <%= $pet.health %> %<br>
+        3 happy: <%= $pet.happiness %> %<br>
+        4 hangry: <%= $pet.eat %> %<br>
+        5 sleep: <%= $pet.asleep %> %<br>
+        6 activity: <%= $pet.activity %> %<br>
+        7 water: <%= $pet.water %> %<br>
+        8 clean: <%= $pet.clean %> %<br>
+        9 fullness: <%= $pet.fullness %> %<br>
+     </p>
+    </div>
+    <div style='margin-left: 3em; font-size: 1.5em'>
+      <p><%= $pet.reaction %></p>
+    </div>
+  </body>
+</html>

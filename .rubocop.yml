@@ -19,3 +19,18 @@ Metrics/PerceivedComplexity:
   Enabled: false
 Metrics/CyclomaticComplexity:
   Enabled: false
+Style/Documentation:
+  Enabled: false
+  Layout/EndOfLine:
+  EnforcedStyle: lf
+  Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Metrics/LineLength:
+  Max: 120
+Style/GuardClause:
+  Enabled: false
+Style/IfUnlessModifier: 
+  Enabled: false
+  
