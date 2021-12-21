@@ -1,6 +1,3 @@
-## Pandagotchi 3.0
-
-Now it is possible to play **your pandagotchi** in web. 
 --------------------------------------------------------------------------------------------
 
 ### How to Play
